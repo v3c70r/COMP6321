@@ -1,4 +1,5 @@
 %Main function for question 1
+%All functions, take original X as input if they need.
 function Q1()
 
     %(a) Load training set
@@ -6,55 +7,58 @@ function Q1()
     X = load("hw1x.dat");
     Y = load("hw1y.dat");
 
-    %Append 1s to X
-    extendX = [ones(length(X), 1), X];
+
 
     %get weight from linear regeression
-    W = LinearRegression(extendX, Y);
+    W = LinearRegression(X, Y);
 
     %Plot points and regression result
-    clf;
-    scatter(X,Y);
-    hold on;
-    range = (min(X):0.01:max(X))';;
-
-    testMatrix = [ones(length(range), 1), range];
-
-    res = testMatrix * W;
-    %plot(range, res);
-
-    err =  J(extendX, Y, W);
-
-    fprintf("Error is %f\n", err);
-
-    %(e) Quadratic regression
-    degree = 2;
-    W = PolyRegress(extendX, Y, degree);
-
-    testMatrix = [ones(length(range), 1), range];   %Add ones
-
-    for d=2:degree
-        testMatrix = [testMatrix, testMatrix(:,2).^d];
-    end
-
-    hold on
-    res = testMatrix*W;
+    PlotNSave(X, Y, W, 1, "fig/linear.eps");
 
     %plot(range, res);
+    err =  J(X, Y, W, 1);
+    disp("Linear Regression"), disp(err);
 
-    %(f) cubic regression
-    degree = 3;
-    W = PolyRegress(extendX, Y, degree);
 
-    testMatrix = [ones(length(range), 1), range];   %Add ones
+    %Polynomial Regression
+    %Quadratic Regression
 
-    for d=2:degree
-        testMatrix = [testMatrix, testMatrix(:,2).^d];
-    end
+    W = PolyRegress(X, Y, 2);
+    PlotNSave(X, Y, W, 2, "fig/quad.eps");
+    err =  J(X, Y, W, 2);
+    disp("Quadratic Regression"), disp(err);
 
-    hold on
-    res = testMatrix*W;
-    plot(range, res);
+    %Cubic PolyRegression
 
+    W = PolyRegress(X, Y, 3);
+    PlotNSave(X, Y, W, 3, "fig/cubic.eps");
+    err = J(X, Y, W, 3);
+    disp("Qubic Regression"), disp(err);
+
+    %heigher order PolyRegression
+    %d = 7;
+    %W = PolyRegress(X, Y, d);
+    %PlotNSave(X, Y, W, d, "fig/test.eps");
+    %err = J(X, Y, W, d);
+    %disp(err);
+    kFoldValidation(X, Y, 10, 5);
+
+    %Now, normalize the input data X
+    %X = Normalize(X);
+
+    %get weight from linear regeression
+    %W = LinearRegression(X, Y);
+
+    %%Plot points and regression result
+    %PlotNSave(X, Y, W, 1, "fig/linear_normalized.eps");
+    %err =  J(X, Y, W, 1);
+    %disp("Linear Regression Normalized"), disp(err);
+
+    %%Quadratic Regression
+
+    %W = PolyRegress(X, Y, 2);
+    %PlotNSave(X, Y, W, 2, "fig/quard_normalize.eps");
+    %err =  J(X, Y, W, 2);
+    %disp("Quadratic Regression"), disp(err);
 
 end
