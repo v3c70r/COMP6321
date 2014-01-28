@@ -1,6 +1,6 @@
 %Perform a k-Fold Validation on training sample
 
-function kFoldValidation(X, Y, d, k)
+function kFoldValidation(X, Y, d, k, norm="no")
     if mod(size(X)(1), k) == 0   %Can perform k-fold
         %Seperate X and Y into k groups
 
@@ -21,9 +21,9 @@ function kFoldValidation(X, Y, d, k)
             averageTestError = 0;
             averageTrainingError=0;
             for i=1:k
-                testX = extendInput(Xgroups(:,:,i), degree);
+                testX = extendInput(Xgroups(:,:,i), degree,norm);
                 testY = Ygroups(:,:,i);
-                trainX = extendInput(X([1:(i-1)*numElem, i*numElem+1:end],:), degree);
+                trainX = extendInput(X([1:(i-1)*numElem, i*numElem+1:end],:), degree,norm);
                 trainY = Y([1:(i-1)*numElem, i*numElem+1:end],:);
                 W = PolyRegress(trainX, trainY, degree);
                 averageTestError = J(testX, testY, W, degree) + averageTestError;

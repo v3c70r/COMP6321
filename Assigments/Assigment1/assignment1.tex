@@ -62,17 +62,74 @@
                 \caption{Cubic Regression}\label{f}
             \end{figure}
 
-            error = 10.878
+            Error = 10.878
 
             Comparing with the cubic regression, it is a better fit.
 
         \item %(g) 
-            Using K-fold cross validation would be able to find the best fit in the data. The average error on traning data would be keeping decrease while the order in
+            Using K-fold cross validation would be able to find the best fit in the data. The average error on traning data will keep decreasing and the average test error will reach a minimum and bounce back with the increase of order.
 
-        \item %(h)
+        \item Table \ref{CrossValid} are the average training errors and average test errors from order 1 to order 7. From the table we can observe that the average test error reaches its minimum at the order 6, which means that the best order of polynomial is 6.
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccc}
+                Order & Average Traing Error & Average Test Error \\
+                    \hline
+                1 & 26.55568 & 6.92412 \\
+                2 & 10.03406 & 2.65285 \\
+                3 & 8.58810  & 2.47171 \\
+                4 & 1.14900  & 0.33340 \\
+                5 & 1.13820  & 0.33771 \\
+                6 & 0.85694  & 0.26229 \\
+                7 & 0.85157  & 0.27419 \\
+                8 & 14.88149  & 4.17042\\
+                9 & 36.07754  & 9.39602 \\
+                10 & 49.34058  & 12.76735 \\
+                \end{tabular}
+                \caption{5-Fold Cross Validation}
+                \label{CrossValid}
+            \end{table}
+
+            Figure \ref{f} plots the data and the result of 6-order polynomial regression.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=8cm]{fig/6-order.eps}
+                \caption{6-order Regression}\label{g}
+            \end{figure}
+
+            Error = 1.0936
+
+        \item From table \ref{CrossValid}, we can observe that while the order is larger than 7, the error increased serviously. It is not what we expected and caused by numerical problem. In order to avoid such problem, normalization of input data is adopted. Table \ref{NCrossValid} is 5-fold cross validation with normalized data. Comparing with the previous table, the numerical problem does not happen anymore. And the approximator, i.e. the average errors, remain the same.
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccc}
+                Order & Average Traing Error & Average Test Error \\
+                    \hline
+                1 & 26.55568 & 6.92412 \\
+                2 & 10.03406 & 2.65285 \\
+                3 & 8.58810  & 2.47171 \\
+                4 & 1.14900  & 0.33340 \\
+                5 & 1.13820  & 0.33771 \\
+                6 & 0.85694  & 0.26229 \\
+                7 & 0.85157  & 0.27419 \\
+                8 & 0.84869  & 0.37166 \\
+                9 & 0.83419  & 0.37078 \\
+                10 & 0.82882  & 0.36763 \\
+                \end{tabular}
+                \caption{Normalized 5-Fold Cross Validation}
+                \label{NCrossValid}
+            \end{table}
+
+            The best degree of polynomial regression, however, as same as the previous question, is still 6.
+
+        \item Normalization have no effect on approximator
+
+            
 
 
 \section{Weighted Linear Regression}
+
             
 
 \end{enumerate}
