@@ -131,6 +131,19 @@
 
 
 \section{Weighted Linear Regression}
+\begin{enumerate}[a]
+    \item In order to add weight matrix $U$ to the system, the matrix can be formed like this:
+    $$ U = 
+    \left[ {begin{array}{ccccc}
+    u_1 & 0 &  0 & \cdots  & 0\\
+    0 & u_2 & 0 & \cdots & 0\\
+    0 & 0 & u_3 & \cdots & 0\\
+    0 & 0 & 0 & \ddots & 0\\
+    0 & 0 & 0 & \cdots & u_m\\
+    \end{array} \right]
+
+    $$
+\end{enumerate}
 \section{Error Criterion for Exponential Noise}
 
 In order to find the best hypothesis $h$ on training data $D$, we need to find a hypothesis that maximum a psteriori:

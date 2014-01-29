@@ -4,8 +4,8 @@ function Q1()
 
     %(a) Load training set
 
-    X = load("hw1x.dat");
-    Y = load("hw1y.dat");
+    X = load('hw1x.dat');
+    Y = load('hw1y.dat');
 
 
 
@@ -13,11 +13,11 @@ function Q1()
     W = LinearRegression(X, Y);
 
     %Plot points and regression result
-    PlotNSave(X, Y, W, 1, "fig/linear.eps");
+    PlotNSave(X, Y, W, 1, 'fig/linear.eps');
 
     %plot(range, res);
     err =  J(X, Y, W, 1);
-    disp("Linear Regression"), disp(err);
+    disp('Linear Regression'), disp(err);
 
 
     %Polynomial Regression
