@@ -69,6 +69,8 @@
         \item %(g) 
             Using K-fold cross validation would be able to find the best fit in the data. The average error on traning data will keep decreasing and the average test error will reach a minimum and bounce back with the increase of order.
 
+            However, if we only pick the fold in increasing order, the data we picked is not i.i.d.
+
         \item Table \ref{CrossValid} are the average training errors and average test errors from order 1 to order 7. From the table we can observe that the average test error reaches its minimum at the order 6, which means that the best order of polynomial is 6.
             \begin{table}[H]
                 \centering
@@ -129,8 +131,35 @@
 
 
 \section{Weighted Linear Regression}
+\section{Error Criterion for Exponential Noise}
 
-            
+In order to find the best hypothesis $h$ on training data $D$, we need to find a hypothesis that maximum a psteriori:
+$$h_{MAP}=\arg\max_{h\in{}H}P(h|D)$$
+Using Bayes theorm
+$$h_{MAP}=\arg\max_{h\in{}H}\frac{P(D|h)P(h)}{P(D)}$$
+Since $D$ is independent of $h$
+$$h_{MAP}=\arg\max_{h\in{}H}P(D|h)P(h)$$
+If we assume all hypothesis are equally likely a priori, than we can further simplify and choose the maximum likelihood hypothesis:
+$$h_{ML}=\arg\max_{h\in{}H}P(D|h)=\arg\max_{h\in{}H}L(h)$$
+
+Adopt the assumption that:
+$$y_i=h_w(x_i)+\lambda_i$$
+where $\lambda_i$ is exponential distribution.
+$$
+    p_\lambda=\begin{cases}
+        \lambda{}e^{-\lambda{}t}&t\geq0 \\
+        0&otherwise
+    \end{cases}
+$$
+The best hypothesis maximizes the likelihood of $y_i-h_w(x_i)=\lambda_i$:
+%$$L(w)=\prod_{i=1}^m\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2}(\frac{y_i-h_w(x_i)}{\sigma})^2}$$
+$$L(w)=\prod_{i=1}^m\lambda\cdot{}e^{-\lambda(y_i-h_w(x_i))}$$
+Apply the $\log$ trick
+$$\ln{}L(w)=\sum^m_{i=1}(\ln\lambda-\lambda(y_i-h_w(x_i))\\
+=\sum^m_{i=1}\ln\lambda-\sum^m_{i=1}\lambda(y_i-h_w(x_i))$$
+We want to maximize the likelihood, thus we need to minimize $\sum^m_{i=1}\lambda(y_i-h_w(x_i))$. So, the error criterion we choose is:
+$$w^*=\arg\min_w\sum^m_{i=1}\lambda(y_i-h_w(x_i))$$
+
 
 \end{enumerate}
 \end{document}
