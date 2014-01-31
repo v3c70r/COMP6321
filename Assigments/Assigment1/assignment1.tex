@@ -131,18 +131,46 @@
 
 
 \section{Weighted Linear Regression}
-\begin{enumerate}[a]
+\begin{enumerate}[(a)]
     \item In order to add weight matrix $U$ to the system, the matrix can be formed like this:
-    $$ U = 
-    \left[ {begin{array}{ccccc}
-    u_1 & 0 &  0 & \cdots  & 0\\
-    0 & u_2 & 0 & \cdots & 0\\
-    0 & 0 & u_3 & \cdots & 0\\
-    0 & 0 & 0 & \ddots & 0\\
-    0 & 0 & 0 & \cdots & u_m\\
-    \end{array} \right]
+    \[ U = 
+    \left| 
+    {\begin{array}{ccccc}
+    u_1 & 0 & 0 & \cdots & 0 \\
+    0   & u_2 & 0 & \cdots & 0 \\
+    0   & 0 & u_3 & \cdots & 0 \\
+    0   & 0 & 0 & \ddots & 0 \\
+    0   & 0 & 0 & \cdots & u_m
+    \end{array}}
+    \right|
+\]
+$Xw-y$~ can be represent in Matrix form:
+\[Xw-y=
+\left|
+{\begin{array}{c}
+    W^Tx_1-y_1\\
+    W^Tx_2-y_2\\
+    W^Tx_3-y_3\\
+    W^Tx_4-y_4\\
+    W^Tx_m-y_m
+\end{array}}
+\right|
+\]
+Thus, the cost function can be expanded like this:
 
-    $$
+$$J(w)=\sum_{i=1}^mu_i(w^Tx_i-y_i)^2 $$
+$$J(w)=u_1(w^Tx_1-y_1)^2+u_2(w^Tx_2-y_2)^2+\cdots+u_m(w^Tx_m-y_m)^2$$
+$$J(w)=(Xw-y)^TU(Xw-y)$$
+    \item In order to calculate the gradient of J(w), we need to expand it:
+        $$J(w)=w^TX^TUXw-w^TX^Tuy-y^TUXw+y^TUy$$
+        Calculate the gradient:
+        $$\nabla_wJ(w)=2X^TUXw-wX^TUy$$
+        Set gradient to 0:
+        $$\nabla_wJ(w)=2X^TUXw-wX^TUy=0$$
+        $$w=(X^TUX)^{-1}X^TUy$$
+
+\item
+
 \end{enumerate}
 \section{Error Criterion for Exponential Noise}
 

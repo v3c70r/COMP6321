@@ -1,6 +1,6 @@
 %Perform a k-Fold Validation on training sample
 
-function kFoldValidation(X, Y, d, k, norm="no")
+function kFoldValidation(X, Y, d, k, norm='no')
     if mod(size(X)(1), k) == 0   %Can perform k-fold
         %Seperate X and Y into k groups
 
@@ -33,8 +33,8 @@ function kFoldValidation(X, Y, d, k, norm="no")
             averageTrainingError = averageTrainingError/k;
             output(degree, :) = [degree averageTrainingError averageTestError];
         end
-        %printmat(output, "K-Fold Validation", "", "d TrainingErr TestErr");
-        disp("Cross Validation"), disp(output);
+        %printmat(output, 'K-Fold Validation', '', 'd TrainingErr TestErr');
+        disp('Cross Validation'), disp(output);
 
         %hold on;
         %output(:,1)
@@ -44,6 +44,6 @@ function kFoldValidation(X, Y, d, k, norm="no")
         
 
     else
-        disp("Error");
+        disp('Error');
     end
 end

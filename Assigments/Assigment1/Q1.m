@@ -4,6 +4,7 @@ function Q1()
 
     %(a) Load training set
 
+    disp('This function is writen for solve the question 1 of first Machine Learning assigment');
     X = load('hw1x.dat');
     Y = load('hw1y.dat');
 
@@ -24,21 +25,21 @@ function Q1()
     %Quadratic Regression
 
     W = PolyRegress(X, Y, 2);
-    PlotNSave(X, Y, W, 2, "fig/quad.eps");
+    PlotNSave(X, Y, W, 2, 'fig/quad.eps');
     err =  J(X, Y, W, 2);
-    disp("Quadratic Regression"), disp(err);
+    disp('Quadratic Regression'), disp(err);
 
     %Cubic PolyRegression
 
     W = PolyRegress(X, Y, 3);
-    PlotNSave(X, Y, W, 3, "fig/cubic.eps");
+    PlotNSave(X, Y, W, 3, 'fig/cubic.eps');
     err = J(X, Y, W, 3);
-    disp("Qubic Regression"), disp(err);
+    disp('Qubic Regression'), disp(err);
 
     %heigher order PolyRegression
     %d = 7;
     %W = PolyRegress(X, Y, d);
-    %PlotNSave(X, Y, W, d, "fig/test.eps");
+    %PlotNSave(X, Y, W, d, 'fig/test.eps');
     %err = J(X, Y, W, d);
     %disp(err);
 
@@ -47,33 +48,33 @@ function Q1()
     %heigher order PolyRegression
     d = 6;
     W = PolyRegress(X, Y, d);
-    PlotNSave(X, Y, W, d, "fig/6-order.eps");
+    PlotNSave(X, Y, W, d, 'fig/6-order.eps');
     err = J(X, Y, W, d);
-    disp("6-order"), disp(err);
+    disp('6-order'), disp(err);
     %Now, normalize the input data X
 
     %get weight from linear regeression
 
     %%Plot points and regression result
-    %PlotNSave(X, Y, W, 1, "fig/linear_normalized.eps");
+    %PlotNSave(X, Y, W, 1, 'fig/linear_normalized.eps');
     %err =  J(X, Y, W, 1);
-    %disp("Linear Regression Normalized"), disp(err);
+    %disp('Linear Regression Normalized'), disp(err);
 
     %%Quadratic Regression
 
     %W = PolyRegress(X, Y, 2);
-    %PlotNSave(X, Y, W, 2, "fig/quard_normalize.eps");
+    %PlotNSave(X, Y, W, 2, 'fig/quard_normalize.eps');
     %err =  J(X, Y, W, 2);
-    %disp("Quadratic Regression"), disp(err);
+    %disp('Quadratic Regression'), disp(err);
 
 
     %heigher order PolyRegression
-    kFoldValidation(X, Y, 10, 5, "yes");
+    kFoldValidation(X, Y, 10, 5, 'yes');
 
     d = 6; 
-    W = PolyRegress(X, Y, d, "yes");
-    PlotNSave(X, Y, W, d, "fig/6-order_normalized.eps", "yes");
-    err = J(X, Y, W, d, "yes");
-    disp("6-order normalized"), disp(err);
+    W = PolyRegress(X, Y, d, 'yes');
+    PlotNSave(X, Y, W, d, 'fig/6-order_normalized.eps', 'yes');
+    err = J(X, Y, W, d, 'yes');
+    disp('6-order normalized'), disp(err);
 
 end

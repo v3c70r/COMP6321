@@ -1,7 +1,7 @@
 %This function is used to plot training data and trained function in a graph
 %and save it to fileName, which should be an eps file
 
-function PlotNSave(X, Y, W, d, fileName, norm="no")
+function PlotNSave(X, Y, W, d, fileName, norm='no')
 
     range = (min(X):0.01:max(X))';
     %testMatrix = [ones(length(range), 1), range];
@@ -15,7 +15,7 @@ function PlotNSave(X, Y, W, d, fileName, norm="no")
     hold on;
     scatter(X,Y);
     plot(range, testMatrix*W);
-    print(fileName, "-depsc")
+    print(fileName, '-depsc')
     hold off;
     
 
