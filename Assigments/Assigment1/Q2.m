@@ -20,17 +20,22 @@ function Q2()
 
     %Draw the whole stuff in range
     range = (min(X):0.01:max(X))';
+
     testMatrix = extendInput(range, 1);
+
+    clf();
     hold on;
     scatter(X,Y);
 
-    for i=1.0:2.0
+    for i=1.0:0.5:5.0
 
         plot(range, testMatrix*W);
 
-        U(MaxIndex, MaxIndex) = 3.1;
+        U(MaxIndex, MaxIndex) = i;
         W = WeightedLinearRegress(X, Y, U);
         err =  J(X, Y, W, 1);
         disp('Linear Regression'), disp(err);
     end
+    hold off;
+    print('fig/weighted.eps', '-depsc')
 end

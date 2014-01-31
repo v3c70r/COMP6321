@@ -125,7 +125,8 @@
 
             The best degree of polynomial regression, however, as same as the previous question, is still 6.
 
-        \item Normalization have no effect on approximator
+        \item Let $X_s$ is the normalize matrix, which is a diagonal matrix with maximum of each feature on its diagonal. Thus, the normalized input can be computed by $X\times{}X_s$.
+            
 
             
 
@@ -169,7 +170,16 @@ $$J(w)=(Xw-y)^TU(Xw-y)$$
         $$\nabla_wJ(w)=2X^TUXw-wX^TUy=0$$
         $$w=(X^TUX)^{-1}X^TUy$$
 
-\item
+    \item Firstly, $U$ is initiated as an identity matrix. Then the weight of largest input in X is increased from 1.0 to 5.0 with the step of 0.5. The result is ploted in fig \ref{weight}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=8cm]{fig/weighted.eps}
+                \caption{Weighted Linear Regression}\label{weighted}
+            \end{figure}
+
+            We can obivous that the value is moving toward the largest input with the incurease of the weight. This is because that the more weight is given to the specified input, the more influence of the cost will have to the cost function. 
+
+        \item
 
 \end{enumerate}
 \section{Error Criterion for Exponential Noise}

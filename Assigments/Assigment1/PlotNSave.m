@@ -15,7 +15,7 @@ function PlotNSave(X, Y, W, d, fileName, norm='no')
     hold on;
     scatter(X,Y);
     plot(range, testMatrix*W);
-    print(fileName, '-depsc')
+    print(fileName, '-depsc');
     hold off;
     
 
