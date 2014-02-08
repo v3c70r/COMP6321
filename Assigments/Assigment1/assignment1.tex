@@ -75,7 +75,7 @@
             \begin{table}[H]
                 \centering
                 \begin{tabular}{ccc}
-                Order & Average Traing Error & Average Test Error \\
+                Order & Average Training Error & Average Test Error \\
                     \hline
                 1 & 26.55568 & 6.92412 \\
                 2 & 10.03406 & 2.65285 \\
@@ -125,7 +125,12 @@
 
             The best degree of polynomial regression, however, as same as the previous question, is still 6.
 
-        \item Let $X_s$ is the normalize matrix, which is a diagonal matrix with maximum of each feature on its diagonal. Thus, the normalized input can be computed by $X\times{}X_s$.
+        \item Let $X_N$ is the normalize matrix, which is a diagonal matrix with maximum of each feature on its diagonal. Thus, the normalized input can be computed by $X\times{}X_N$.
+            Thus, the new weighted output $W_N$ is:
+            $$W_N = ((XX_N)^T(XX_N))^{-1}(XX_N)^TY$$
+            $$W_N = X_N^{-1}(X^TX)^{-1}X^TY$$
+            $$W_N = X_N^{-1}W$$
+            Since $X_N^{-1}$ is a constant matrix, so the output have no effect but scaling change.
             
 
             
@@ -177,9 +182,9 @@ $$J(w)=(Xw-y)^TU(Xw-y)$$
                 \caption{Weighted Linear Regression}\label{weighted}
             \end{figure}
 
-            We can obivous that the value is moving toward the largest input with the incurease of the weight. This is because that the more weight is given to the specified input, the more influence of the cost will have to the cost function. 
+            We can obvious that the value is moving toward the largest input with the incurease of the weight. This is because that the more weight is given to the specified input, the more influence of the cost will have to the cost function. 
 
-        \item
+        \item According to the not of CMU, if the data set is heteroskedastic, the noise can be recovered by setting weights to $w_i=\frac{1}\sigma^2$
 
 \end{enumerate}
 \section{Error Criterion for Exponential Noise}
@@ -213,4 +218,7 @@ $$w^*=\arg\min_w\sum^m_{i=1}\lambda(y_i-h_w(x_i))$$
 
 
 \end{enumerate}
+\section{Reference}
+[1] Extending Linear Regression: Weighted Least Squares, Heteroskedasticity, Local Polynomial Regression. http://www.stat.cmu.edu/~cshalizi/350/lectures/18/lecture-18.pdf
+
 \end{document}
