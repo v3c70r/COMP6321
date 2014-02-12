@@ -1,6 +1,6 @@
 
 function W=L2Regression(X,Y, lambda)
     extendedX = extendInput(X);
-    I = eye(length(extendedX));
-    W = pinv(X'*X + I.*lambda)*X*Y;
+    I = eye(size(extendedX)(2));
+    W = pinv(extendedX'*extendedX + lambda.*I)*extendedX'*Y;
 end
