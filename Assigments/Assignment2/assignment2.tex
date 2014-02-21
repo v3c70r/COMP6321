@@ -1,0 +1,95 @@
+\documentclass[a4paper, 12pt, titlepage]{article}
+%=======Unpackage Things===============
+\usepackage{color}
+\usepackage{colortbl}
+
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{listings}
+%\usepackage{fullpage}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{array}
+\usepackage{titlesec}
+
+\titleformat{\section}
+    {\normalfont\fontsize{12}{15}\bfseries}{\thesection}
+    {1em}{}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+
+\begin{document}
+%==title==
+\title{COMP6321 Assignment 2}
+\setcounter{tocdepth}{2}
+\newpage
+\begin{center}
+    {\huge COMP6321: Assignment \#2}
+
+
+    \vspace{2cm}
+    Student: Qing Gu  \hspace{5cm}
+    Student ID: 6935451
+    \vspace{1cm}
+
+    =================================================
+\end{center}
+\section{L1 vs. L2 Regularization}
+\begin{enumerate}
+    \item Assume the training data follows i.i.d. I use first 80 data for training and last 9 data for testing. In order to adopt L2 regression, we have to change the cost function to:
+        $$J(w) = \frac{1}{2}(\phi{}w-y)^T(\phi{}w-y)+\frac{\lambda}{2}w^Tw$$
+        $$w^* = (\phi^T\phi+\lambda{}I)^{-1}\phi^Ty$$
+        
+    \item For this data set, we have 4 weights to deal with. Thus, the L2 problem is:
+        $$\min_{w1, w2, w3} \sum^m_{j=1}(y_j-w_1x_1-w_2x_2-w_3x_3)$$
+        where
+        $$|w_1, w_2, w_3|<\lambda$$
+        In order to adopt quadratic programming:
+        $$J(w) = \frac{1}{2} w^THw + f^Tw subject to Aw\leq{}b$$
+        where
+        $$H = X^TX, f=-(y^TX)^T, b=\lambda$$
+        \[A=
+        \left|
+        {\begin{array}{ccc}
+                1 & 1 & 1\\
+                1 & 1 & -1\\
+                1 & -1 & 1\\
+                -1 & 1 & 1\\
+                -1 & -1 & 1\\
+                -1 & 1 & -1\\
+                1 & -1 & -1\\
+                -1 & -1 & -1\\
+        \end{array}}
+        \right|
+        \]
+\end{enumerate}
+
+\section{Dealing with Missing Data}
+
+The goal of generative learning is to calculate the posterior $p(y|x)$ with an application of Baye's Rule and access to prior $p(y)$ and the liklikhhod of both classes( i.e $p(x|y=0)$ and $p(x|y=1)$).
+
+\section{Naive Bayes Assumption}
+
+\begin{enumerate}
+    \item The initial Naive Bayes classifier should have 5 paramters, i.e. $\theta_1, \theta_{1,0}, \theta_{2, 0}, \theta_{1, 1}, \theta_{2, 1}$. There are 7 parameters for classifier with 3 features, they are $\theta_1, \theta_{1,0}, \theta_{2, 0},\theta_{3, 0}, \theta_{1, 1}, \theta_{2, 1}$ and $\theta_{3, 1}$
+    \item In this example, we have feature $x_2$ and $x_3$ duplicated. $\theta_{2,1}, \theta_{2,0}$ and $\theta_{3,1}, \theta_{3,0}$ should be identical if the model is perfectly learnt. Put it into the descion surface:
+        $$\frac{P(y=1|x)}{P(y=0|x)}=\frac{P(y=1)\Pi^3_{i=1}\theta^{x_i}_{i,1}(1-\theta_{i,1})^{1-x_i}}{P(y=0)\Pi^3_{i=1}\theta^{x_i}_{i,0}(1-\theta_{i,0})^{1-x_i}}$$
+        Using the log trick:
+        $$\log{\frac{P(y=1|x)}{P(y=0|x)}}=\log{\frac{P(y=1)_i}{P(y=0}} + \log{\frac{P(x_1|y=1)}{P(x_1|y=0)}}+\log{\frac{P(x_2|y=1)}{P(x_2|y=0)}}+\log{\frac{P(x_3|y=1)}{P(x_3|y=0)}}$$
+        Considering the original situation, we have $\log{\frac{P(x_3|y=1)}{P(x_3|y=0)}}$ appended to the original descion surface. The worst scenerio happens when the distribution of feature is highly unbalence, for example, $P(x_3|y=1) = 0.9999$ and $P(x_3|y=1) = 0.0001$. However, since most of the x are i.i.d, thus, the influnce would be very small to the descion surface. It is to say that the classifier works well even there are depdent features.
+
+\end{enumerate}
+
+\section{MAP Estimation vs. ML Estimation}
+
+\section{Using Discriminative vs. Generative classifiers}
+
+
+
+\end{document}
