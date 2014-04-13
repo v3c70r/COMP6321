@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, titlepage]{article}
+\documentclass[a4paper, 10pt, titlepage]{article}
 %=======Unpackage Things===============
 \usepackage{color}
 \usepackage{colortbl}
@@ -18,7 +18,7 @@
 \usepackage{float}
 
 \titleformat{\section}
-    {\normalfont\fontsize{12}{15}\bfseries}{\thesection}
+    {\normalfont\fontsize{12}{13}\bfseries}{\thesection}
     {1em}{}
 
 %\titleformat{\subsection}
@@ -49,20 +49,198 @@
 \section{VC Dimension}
 \begin{enumerate}
     \item $VC(H)=1$, since we can always shatter the subset with 1 points.
+        \begin{center}
+        \begin{picture}(100,60)
+        \put(10,60){$-$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \put(50,45){\line(0,1){10}}
+        \put(50,55){\line(1,0){5}}
+        \put(50,45){\line(1,0){5}}
+        \end{picture}
+        \end{center}
 
-        $$-----[---\oplus-----$$
-        $$-----\ominus-[--------$$
+        \begin{center}
+        \begin{picture}(100,20)
+        \put(70,60){$-$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \put(50,45){\line(0,1){10}}
+        \put(50,55){\line(1,0){5}}
+        \put(50,45){\line(1,0){5}}
+        \end{picture}
+        \end{center}
     But we can not do that when there are two points. When there is a dichotomy like this:
-        $$-------\oplus---\ominus----$$
+        \begin{center}
+        \begin{picture}(100,60)
+        \put(70,60){$-$}
+        \put(10,60){$+$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        %\put(50,45){\line(0,1){10}}
+        %\put(50,55){\line(1,0){5}}
+        %\put(50,45){\line(1,0){5}}
+        \end{picture}
+        \end{center}
 
     \item $VC(H)=2$, we can find configuration for two points.
-    $$----\oplus--]-----\ominus----$$
-    $$----\ominus----[---\oplus----$$
-    $$----\oplus-------\oplus--]--$$
-    $$----\ominus-------\ominus-[---$$
+        \begin{center} 
+        \begin{picture}(100,60)
+        \put(10,60){$-$}
+        \put(70,60){$+$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \put(50,45){\line(0,1){10}}
+        \put(50,55){\line(1,0){5}}
+        \put(50,45){\line(1,0){5}}
+        \end{picture}
+
+        \begin{picture}(100,20)
+        \put(10,60){$+$}
+        \put(70,60){$+$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \put(5,45){\line(0,1){10}}
+        \put(5,55){\line(1,0){5}}
+        \put(5,45){\line(1,0){5}}
+        \end{picture}
+
+        \begin{picture}(100,20)
+        \put(10,60){$-$}
+        \put(70,60){$-$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \put(80,45){\line(0,1){10}}
+        \put(80,55){\line(1,0){5}}
+        \put(80,45){\line(1,0){5}}
+        \end{picture}
+
+        \begin{picture}(100,20)
+        \put(10,60){$+$}
+        \put(70,60){$-$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \put(30,45){\line(0,1){10}}
+        \put(25,55){\line(1,0){5}}
+        \put(25,45){\line(1,0){5}}
+        \end{picture}
+        \end{center}
+        But for this configuration with 3 points, we can not shatter it.
+        \begin{center}
+        \begin{picture}(100,60)
+        \put(10,60){$+$}
+        \put(40,60){$-$}
+        \put(70,60){$+$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \end{picture}
+        \end{center}
+
 
     \item $VC(H)=$
-        
+\end{enumerate}
+\section{KL-Divergence}
+\begin{enumerate}
+    \item There are two ways to prove it.
+
+        \begin{itemize}
+                \item Method 1:
+
+                    Let random variable $f(x) = \frac{Q(x)}{P(x)}$ Then we can rewrite KL Divergence to the expectation of $f(x)$ whose probability is $P(x)$
+                    $$KL(P||Q) = -E_p[\log{f(x)}] $$
+                    $$\geq-\log{E_p[f(x)]}\mbox{~(Jensen's inequality)}$$
+                    $$=-\log{\sum_xP(x)\frac{Q(X)}{P(X)}}=0$$
+                    Thus, $KL(P||Q) \geq 0$.
+
+                \item Method 2:
+                    $$-KL(P||Q) = \sum_xP(x)\log{\frac{Q}{P}}$$
+                    $$\because \log{x}\leq{}x-1$$
+                    $$\therefore -KL(P||Q)\leq\sum_x(\frac{Q(x)}{P(x)}-1)$$
+                    $$-KL(P||Q)=\sum_xQ(x)-sum_xP(x)$$
+                    $$\because P(x)\mbox{~is an distribution function}$$
+                    $$\therefore -KL(P||Q) \leq \sum_xQ(x)-1 \leq 0$$
+                    Thus, $KL(P||Q) \geq 0$.
+        \end{itemize}
+    \item From above, we can observe that when $P(x) = Q(x)$, $KL(P||Q) = 0$
+    \item The maximum value of KL divergence is $+\infty$. When for any $x_i$, $Q(x_i)=0$, then $\log{\frac{Q(x)}{P(x)}} = +\infty$, $KL(P||Q) = +\infty$. 
+    \item KL divergence is not symmetric. 
+    \item   The equation is proved from right. According to definition:
+        \begin{align*}
+         KL(P(X,Y)||Q(X,Y))&=\sum_x\sum_yP(X,Y)log\frac{P(X,Y)}{Q(X,Y)}\\ 
+         &=\sum_x\sum_yP(X,Y)log\frac{P(Y|X)P(X)}{Q(Y|X)Q(X)}\mbox{~(Chain rule)}\\ 
+         &= \sum_x\sum_yP(X,Y)log\frac{P(Y|X)}{Q(Y|X)}+\sum_x\sum_yP(X,Y)log\frac{P(X)}{Q(X)}\\ 
+         &= \sum_x\sum_yP(Y|X)P(X)log\frac{P(Y|X)}{Q(Y|X)}+KL(P(X)||Q(X))\\ 
+         &= \sum_xP(X)\sum_yP(Y|X)log\frac{P(Y|X)}{Q(Y|X)}+KL(P(X)||Q(X))\\ 
+         &= KL(P(Y|X)||Q(Y|X))+KL(P(X)||Q(X))\\
+         QED
+        \end{align*}
+    \item In this problem, we'd like to find parameter $\theta$ to maximize the distribution $P_\theta(x) =P(x|\theta)$. Let $\hat{P}$ be the empirical distribution, we have:
+        \begin{align*} 
+        KL(\hat{P}||P_\theta)&=\sum_x\hat{P}\log\frac{\hat{P}}{P_\theta}\\
+        &=\sum_x\hat{P}\log\hat{P}-\sum_x\hat{P}\log{P_\theta}\\
+        &=-H(\hat{X})-\sum_x\hat{P}\log{P_\theta}
+        \end{align*}
+        Since $H(\hat{X})$ and $\hat{P}$ are irelevant with $\theta$ and are all greater or equal to 0, therefore,
+        $$\arg{\min_\theta}KL(\hat{P}||P_\theta)=\arg{\max_\theta}\sum_x\log{P_\theta}$$
+        QED
+\section{K-means}
+\section{K-medoids}
+\begin{itemize}
+    \item $\mathfrak{Advantages}$
+        \begin{enumerate}
+            \item K-medoids is more robust to noise and outliers.
+
+        \end{enumerate}
+    \item $\mathfrak{Disadvantages}$
+        \begin{enumerate}
+            \item K-medoids is harder than K-means, i.e. its time complexity is higher than K-meas.
+        \end{enumerate}
+\end{itemize}
+    
+                    
+
+
+                
 \end{enumerate}
 
 
