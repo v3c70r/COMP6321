@@ -3,6 +3,7 @@
 \usepackage{color}
 \usepackage{colortbl}
 \usepackage{mathrsfs}
+\usepackage{hyperref}
 
 \usepackage{graphicx}
 \usepackage{amsthm}
@@ -177,7 +178,47 @@
         \end{center}
 
 
-    \item $VC(H)=$
+    \item $VC(H)=2$. For dichotomy of 2 points, it can be shattered like the example above. For dichotomy of 3 points, we can find a configuration that can not be shattered no matter how many one-sided unions we union. 
+        \begin{center}
+        \begin{picture}(100,60)
+        \put(10,60){$-$}
+        \put(40,60){$+$}
+        \put(70,60){$-$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \end{picture}
+        \end{center}
+
+    \item $VC(H) = 4$. This situation can be interpret as find a configuration that can split positive dots in maximum 2 intervals. If there are 4 points, the maximum number of intervals that the positive points can be split to put in is 2. Thus, we can fit this situation in union of two closed intervals.
+
+        Otherwise, when there are 5 points, there exists a configuration that splits positive points into 3 intervals.
+        \begin{center}
+        \begin{picture}(100,60)
+        \put(10,60){$+$}
+        \put(30,60){$-$}
+        \put(50,60){$+$}
+        \put(70,60){$-$}
+        \put(90,60){$+$}
+        \put(0,50){\line(1,0){100}}
+        \multiput(10,50)(10,0){9}{\line(0,1){5}}
+        \multiput(10,40)(10,0){9}%{\makebox(0,0){\thenn\stepcounter{nn}}}
+        \thicklines
+        \put(20,50){\circle{3}}
+        \put(80,50){\circle{3}}
+        \linethickness{1pt}
+        \end{picture}
+    \end{center}
+    In the example above, the positive points are split into 3 uncontinuous intervals, which can not be fitted in 2 intervals. 
+    \item $VC(H)=2k$. This is an expansion of previous problem. Considering we have $k$ continuous intervals and $2k$ points. The maximum number of intervals that we can shatter the positive points into is $k$, which is achieved by insert a negative point between two positive points. This situation, absolutely, can be shattered by $k$ intervals.
+
+        If we have $2k+1$ points to shatter, there is a configuration to shatter positive points into $k+1$ intervals, like the previous question whose $k$ is 2, which is not possible to fit in $k$ intervals.
+
+
 \end{enumerate}
 \section{KL-Divergence}
 \begin{enumerate}
@@ -224,16 +265,52 @@
         $$\arg{\min_\theta}KL(\hat{P}||P_\theta)=\arg{\max_\theta}\sum_x\log{P_\theta}$$
         QED
 \section{K-means}
+    \begin{itemize}
+        \item 6 Clusters are left in the end
+        \item Final centeroids Table 1
+        \item Number of pixels associate to each centeroid Table 1
+            \begin{table}[H]
+            \center
+            \begin{tabular}{cccc}
+            R       & G       & B       & \#Pixels \\ \hline
+            241.230 & 238.625 & 233.863 & 4930    \\
+            194.412 & 136.333 & 90.939  & 15190   \\
+            136.266 & 61.090  & 10.104  & 52535   \\
+            157.290 & 97.592  & 51.434  & 22075   \\
+            78.927  & 37.108  & 13.071  & 40365   \\
+            25.978  & 23.236  & 23.606  & 74917   \\
+            \end{tabular}
+            \label{pixel}
+            \caption{Centeroids}
+        \end{table}
+    \item There are 47 iterations, the distance from each centeroid to its correspondent pixels are stored in \href{./out.txt}{out.txt}
+    \item Result of images can be seen by running \emph{imageViewer.py}. This script can display images and store them in eps file.
+        \begin{figure}[H]
+    \begin{minipage}{0.49\linewidth}
+            \includegraphics[width=6cm]{origin.eps}
+      \caption{Original Picture}\label{fig:left}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.49\linewidth}
+            \includegraphics[width=6cm]{clustered.eps}
+      \caption{Clustered Picture}\label{fig:right}
+    \end{minipage}
+  \end{figure}
+    \end{itemize}
 \section{K-medoids}
 \begin{itemize}
     \item $\mathfrak{Advantages}$
         \begin{enumerate}
             \item K-medoids is more robust to noise and outliers.
+            \item It is more suitable to desecrate dataset. For the color clustering above, it would be more suitable to use k-medoids to keep the colors in integers. 
 
         \end{enumerate}
     \item $\mathfrak{Disadvantages}$
         \begin{enumerate}
             \item K-medoids is harder than K-means, i.e. its time complexity is higher than K-meas.
+            \item Less efficient, converge slower than K-means.
+            \item More difficult to implement. 
+
         \end{enumerate}
 \end{itemize}
     
